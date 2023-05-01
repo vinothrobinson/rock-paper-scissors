@@ -11,6 +11,13 @@ function getComputerChoice() {
     }
 }
 
+/*
+console.log(getComputerChoice());
+console.log(getComputerChoice());
+console.log(getComputerChoice());
+console.log(getComputerChoice());
+console.log(getComputerChoice()); */
+
 function playRound(playerSelection, computerSelection){
     playerSelection = capitalize(playerSelection);
     if (playerSelection === computerSelection){
@@ -46,9 +53,9 @@ function capitalize(string){
     const str = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     return str;
 }
+
 /*
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice()); */
+const playerSelection = "rOck";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
+*/
