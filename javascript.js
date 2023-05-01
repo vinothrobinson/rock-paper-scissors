@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    let choice = (Math.random() * 10).toFixed(0);
+    let choice = (Math.random() * 10).toFixed(0); // Uses a random number to choose the computer's move
     if (choice <= 3) {
         return "Scissors";
     }
@@ -20,21 +20,21 @@ console.log(getComputerChoice()); */
 
 function playRound(playerSelection, computerSelection){
     playerSelection = capitalize(playerSelection);
-    if (playerSelection === computerSelection){
+    if (playerSelection === computerSelection){ // The case where both the player and computer have the same move
         console.log(`You tie! ${playerSelection} cannot beat ${computerSelection}`);
-        return 0;
+        return 0; // Value returned when a tie occurs
     }
-    if (playerSelection === "Rock"){
-        if (computerSelection === "Scissors"){
+    if (playerSelection === "Rock"){ // The possible cases when player choose 'Rock'
+        if (computerSelection === "Scissors"){ 
             console.log("You win! Rock beats Scissors");
-            return 1;
+            return 1; // Value returned when the player wins
         }
-        else if (computerSelection === "Paper"){
+        else if (computerSelection === "Paper"){ 
             console.log("You lose! Paper beats Rock");
-            return -1;
+            return -1; // Value returned when the player loses
         }
     }
-    if (playerSelection === "Paper"){
+    if (playerSelection === "Paper"){ // The possible cases when player choose 'Paper'
         if (computerSelection === "Rock"){
             console.log("You win! Paper beats Rock");
             return 1;
@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection){
             return -1;
         }
     }
-    if (playerSelection === "Scissors"){
+    if (playerSelection === "Scissors"){ // The possible cases when player choose 'Scissors'
         if (computerSelection === "Paper"){
             console.log("You win! Scissors beats Paper");
             return 1;
@@ -55,7 +55,7 @@ function playRound(playerSelection, computerSelection){
         }
     }
 }
-
+// This function is used to make sure that user inputs are properly formatted
 function capitalize(string){
     const str = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     return str;
@@ -68,7 +68,7 @@ console.log(playRound(playerSelection, computerSelection));
 */
 
 function game() {
-    let winCounter = 0
+    let winCounter = 0 // Used to keep track of who's winning
     for (let i = 0; i < 5; i++){
         let playerSelection = prompt("Enter a move ('Rock', 'Paper', or 'Scissors'): ");
         let computerSelection = getComputerChoice();
