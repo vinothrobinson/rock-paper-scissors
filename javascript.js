@@ -13,37 +13,31 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection){
     playerSelection = capitalize(playerSelection);
+    if (playerSelection === computerSelection){
+        return `You tie! ${playerSelection} cannot beat ${computerSelection}`;
+    }
     if (playerSelection === "Rock"){
         if (computerSelection === "Scissors"){
-            return "You win! Rock beats Scissors"
+            return "You win! Rock beats Scissors";
         }
         else if (computerSelection === "Paper"){
-            return "You lose! Paper beats Rock"
-        }
-        else {
-            return "You tie! Rock cannot beat Rock"
+            return "You lose! Paper beats Rock";
         }
     }
     if (playerSelection === "Paper"){
         if (computerSelection === "Rock"){
-            return "You win! Paper beats Rock"
+            return "You win! Paper beats Rock";
         }
         else if (computerSelection === "Scissors"){
-            return "You lose! Scissors beats Paper"
-        }
-        else {
-            return "You tie! Paper cannot beat Paper"
+            return "You lose! Scissors beats Paper";
         }
     }
     if (playerSelection === "Scissors"){
         if (computerSelection === "Paper"){
-            return "You win! Scissors beats Paper"
+            return "You win! Scissors beats Paper";
         }
         else if (computerSelection === "Rock"){
-            return "You lose! Rock beats Scissors"
-        }
-        else {
-            return "You tie! Scissors cannot beat Scissors"
+            return "You lose! Rock beats Scissors";
         }
     }
 }
