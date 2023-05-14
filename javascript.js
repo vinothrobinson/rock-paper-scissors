@@ -69,20 +69,59 @@ console.log(playRound(playerSelection, computerSelection));
 
 function game() {
     let winCounter = 0 // Used to keep track of who's winning
-    for (let i = 0; i < 5; i++){
-        let playerSelection = prompt("Enter a move ('Rock', 'Paper', or 'Scissors'): ");
-        let computerSelection = getComputerChoice();
-        winCounter += playRound(playerSelection, computerSelection);
-    }
-    if (winCounter > 0){
+    // for (let i = 0; i < 5; i++){
+    let playerSelection = prompt("Enter a move ('Rock', 'Paper', or 'Scissors'): ");
+    let computerSelection = getComputerChoice();
+    winCounter += playRound(playerSelection, computerSelection);
+    // }
+    if (winCounter === 5){
         return "You won against the computer!"
     }
-    if (winCounter < 0){
+    else if (winCounter === -5){
         return "You lost to the computer!"
     }
-    else {
-        return "You ties with the computer!"
-    }
-}
+} // Adjusted the win conditions and removed the for loop
 
-console.log(game());
+// console.log(game());
+
+/* 
+        Implementing the UI for the Rock Paper Scissors Game
+*/
+
+let totalScore = 0;
+const container = document.querySelector('#main-div');
+const result = document.createElement('div');
+result.classList.add('result');
+const currentScore = document.createElement('p');
+
+currentScore.textContent = `Your current score is currently: ${totalScore}`;
+
+result.appendChild(currentScore);
+container.appendChild(result);
+
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+   button.style.width = "150px";
+   button.style.height = "150px";
+   button.addEventListener('click', (e) =>
+   {
+    totalScore += playRound(button.className, getComputerChoice());
+    currentScore.textContent = `Your current score is currently: ${totalScore}`;
+    
+    if (totalScore === 5){
+        const p2 = document.createElement('p');
+        p2.textContent = "You have won against the CPU!"
+        result.appendChild(p2);
+        totalScore = 0;
+    } 
+    else if (totalScore === -5){
+        const p3 = document.createElement('p');
+        p3.textContent = "You have lost against the CPU!"
+        result.appendChild(p3)
+        totalScore = 0;
+    }
+   })
+});
+
+// playRound(`${button.class}`, getComputerChoice())
