@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(59, 187, 230);
+}
+
+.hScore, .cScore {
+    border: solid black 1px;
+    background-color: rgb(228, 228, 228);
+}
+
+div {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#button-div {
+    margin-top: 50px;
+}
+
+button {
+    background-color: rgb(198, 196, 196);
+}

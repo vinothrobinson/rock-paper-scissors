@@ -11,13 +11,6 @@ function getComputerChoice() {
     }
 }
 
-/*
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice());
-console.log(getComputerChoice()); */
-
 function playRound(playerSelection, computerSelection){
     playerSelection = capitalize(playerSelection);
     if (playerSelection === computerSelection){ // The case where both the player and computer have the same move
@@ -61,33 +54,10 @@ function capitalize(string){
     return str;
 }
 
-/*
-const playerSelection = "rOck";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
-*/
-/*
-function game() {
-    let winCounter = 0 // Used to keep track of who's winning
-    // for (let i = 0; i < 5; i++){
-    let playerSelection = prompt("Enter a move ('Rock', 'Paper', or 'Scissors'): ");
-    let computerSelection = getComputerChoice();
-    winCounter += playRound(playerSelection, computerSelection);
-    // }
-    if (winCounter === 5){
-        return "You won against the computer!"
-    }
-    else if (winCounter === -5){
-        return "You lost to the computer!"
-    }
-} // Adjusted the win conditions and removed the for loop
-
-// console.log(game());
-*/
-
 /* 
         Implementing the UI for the Rock Paper Scissors Game
 */
+
 // Function to refresh the browser
 function refresh() {
     window.location.reload(true);
@@ -103,17 +73,21 @@ const container = document.querySelector('#main-div');
 const result = document.createElement('div');
 result.classList.add('result');
 result.style.display = "flex";
-result.style.justifyContent = "space-evenly";
+result.style.justifyContent = "center";
+result.style.gap = "20px";
 const finalResult = document.createElement('div');
 finalResult.classList.add('finalResult');
+finalResult.style.left = "50%";
+finalResult.style.right = "50%";
 const hScore = document.createElement('p');
 const cScore = document.createElement('p');
+hScore.classList.add('hScore');
+cScore.classList.add('cScore');
 
 // Styling the hScore attribute
 hScore.textContent = `Your current score is: ${humanScore}`;
 hScore.style.width = "150px";
 hScore.style.height = "150px";
-hScore.style.backgroundColor = "rgb(155, 102, 102)";
 hScore.style.display = "flex";
 hScore.style.alignItems = "center";
 hScore.style.textAlign = "center";
@@ -123,7 +97,6 @@ hScore.style.padding = "10px";
 cScore.textContent = `The CPU's current score is: ${cpuScore}`;
 cScore.style.width = "150px";
 cScore.style.height = "150px";
-cScore.style.backgroundColor = "rgb(155, 102, 102)";
 cScore.style.display = "flex";
 cScore.style.alignItems = "center";
 cScore.style.textAlign = "center";
@@ -139,16 +112,18 @@ const newGame =  document.createElement('button');
 newGame.classList.add('newGame');
 newGame.addEventListener('click', refresh);
 newGame.textContent = "Click here to play again!"
+newGame.style.width = "200px"
+newGame.style.height = "50px"
+newGame.style.fontSize = "18px"
 
-// const buttonDiv = document.querySelector('#button-div');
-// buttonDiv.style.display = "flex";
-// buttonDiv.style.alignItems = "center";
 // Iterating through each possible button choice and
 // simulating the playRound() function.
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.style.width = "150px";
     button.style.height = "150px";
+    button.style.marginBottom = "50px";
+    button.style.fontSize = "16px"
     button.addEventListener('click', function game()
    {
     score = playRound(button.className, getComputerChoice());
@@ -170,6 +145,7 @@ buttons.forEach((button) => {
     if (humanScore === 5){
         const p2 = document.createElement('p');
         p2.textContent = "You have won against the CPU!"
+        p2.style.fontSize = "20px";
         finalResult.appendChild(p2);
         finalResult.appendChild(newGame);
         button.removeEventListener('click', game);
@@ -177,6 +153,7 @@ buttons.forEach((button) => {
     else if (cpuScore === 5){
         const p3 = document.createElement('p');
         p3.textContent = "You have lost against the CPU!"
+        p3.style.fontSize = "20px";
         finalResult.appendChild(p3)
         finalResult.appendChild(newGame);
         button.removeEventListener('click', game);
