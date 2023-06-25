@@ -146,18 +146,23 @@ buttons.forEach((button) => {
         const p2 = document.createElement('p');
         p2.textContent = "You have won against the CPU!"
         p2.style.fontSize = "20px";
+        const buttons2 = document.querySelectorAll('button');
+        buttons2.forEach((button) => {
+        button.disabled = true;
+        })
         finalResult.appendChild(p2);
         finalResult.appendChild(newGame);
-        button.removeEventListener('click', game);
     } 
     else if (cpuScore === 5){
         const p3 = document.createElement('p');
         p3.textContent = "You have lost against the CPU!"
         p3.style.fontSize = "20px";
+        const buttons2 = document.querySelectorAll('button');
+        buttons2.forEach((button) => {
+        button.disabled = true;
+        })
         finalResult.appendChild(p3)
-        finalResult.appendChild(newGame);
-        button.removeEventListener('click', game);
-        
+        finalResult.appendChild(newGame);        
     }
    })
 });
